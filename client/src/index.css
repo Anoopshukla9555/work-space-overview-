@@ -1,0 +1,11 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+@layer components {
+  .card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-60; }
+  .btn-primary { @apply btn bg-gradient-to-r from-brand-600 to-violet-600 text-white shadow hover:shadow-lg hover:brightness-110; }
+  .btn-ghost { @apply btn border border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800; }
+  .input { @apply w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 dark:border-slate-700 dark:bg-slate-900; }
+}
+@keyframes drift { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+.drift { animation: drift 9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .drift { animation: none; } }

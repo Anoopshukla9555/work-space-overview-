@@ -35,8 +35,14 @@ const STORAGE_LIMIT_BYTES =
    API
 ============================================================ */
 
+/* ============================================================
+   API
+============================================================ */
+
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
+
 async function apiRequest(url, options = {}) {
-  const response = await fetch(`/api${url}`, {
+  const response = await fetch(`${API_BASE}${url}`, {
     credentials: 'include',
     ...options,
   });

@@ -16,7 +16,13 @@ const pub = u => ({ id: u.id, name: u.name, email: u.email, avatar: u.avatar, pu
   storageUsed: u.storageUsed, storageLimit: u.storageLimit });
 const session = (res, u) => {
   const token = jwt.sign({ uid: u.id }, process.env.JWT_SECRET, { expiresIn: '7d' });
-  res.cookie('token', token, { httpOnly: true, sameSite: 'lax', secure: process.env.NODE_ENV === 'production', maxAge: 7 * 864e5 });
+
+  res.cookie('token', token, {
+    httpOnly: true,
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 7 * 864e5,
+  });
 };
 const makeToken = async (u, type, mins) => {
   const raw = crypto.randomBytes(32).toString('hex');
